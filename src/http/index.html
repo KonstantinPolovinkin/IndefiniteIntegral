@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no">
+    <title>Indefinite Integral</title>
+    <link rel="stylesheet" href="app.css">
+<body>
+    <style>
+        body {
+          background-color: black;
+          color: #0F0;
+          font-family: 'Consolas', monospace;
+        }
+  
+        header {
+          text-align: center;
+        }
+  
+        input, label {
+          display: block;
+        }
+  
+        input {
+          outline: none;
+          border: none;
+          background-color: black;
+          color: #0F0;
+          padding: 1em .5em;
+          display: block;
+          font-size: 1.5em;
+          font-family: 'Consolas', monospace;
+          flex: 1;
+        }
+    </style>
+    <header>
+        <h1>Solve it!</h1>
+    </header>
+    <input type="text" id="input">
+    <div></div>
+    <button>Integrate!</button>
+    <script>
+        document.querySelector('button').onclick = () => {
+            let i1 = document.querySelector('#input').value;
+            fetch(`/integrate?input=${i1}`)
+                .then(response => response.json())
+                .then(data => document.querySelector('div').innerHTML = data);
+        }
+    </script>
+</body>
+
+</html>
